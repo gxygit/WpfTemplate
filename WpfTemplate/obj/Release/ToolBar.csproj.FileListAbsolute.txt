@@ -1,0 +1,13 @@
+D:\test\ToolBar\ToolBar\bin\Release\ToolBar.exe.config
+D:\test\ToolBar\ToolBar\bin\Release\ToolBar.exe
+D:\test\ToolBar\ToolBar\obj\Release\MainWindow.g.cs
+D:\test\ToolBar\ToolBar\obj\Release\App.g.cs
+D:\test\ToolBar\ToolBar\obj\Release\ToolBar_MarkupCompile.cache
+D:\test\ToolBar\ToolBar\obj\Release\ToolBar_MarkupCompile.lref
+D:\test\ToolBar\ToolBar\obj\Release\MainWindow.baml
+D:\test\ToolBar\ToolBar\obj\Release\ToolBar.g.resources
+D:\test\ToolBar\ToolBar\obj\Release\ToolBar.Properties.Resources.resources
+D:\test\ToolBar\ToolBar\obj\Release\ToolBar.csproj.GenerateResource.Cache
+D:\test\ToolBar\ToolBar\obj\Release\ToolBar.exe
+D:\test\ToolBar\ToolBar\bin\Release\NLog.config
+D:\test\ToolBar\ToolBar\obj\Release\ToolBar_Content.g.cs
