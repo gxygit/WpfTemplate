@@ -25,5 +25,10 @@ namespace WpfTemplate
             InitializeComponent(); ;
             DataContext = new MainWindowViewModel(this);
         }
+
+        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

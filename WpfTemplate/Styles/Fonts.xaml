@@ -13,4 +13,7 @@
     <system:Double x:Key="FontSizeXXLarge">30</system:Double>
 
     <system:String x:Key="FontAwesomeWaitIcon">&#xf110;</system:String>
+    <system:String x:Key="FontAwesomeChecked">&#xf00c;</system:String>
+    <system:String x:Key="FontAwesomeToggleOn">&#xf205;</system:String>
+    <system:String x:Key="FontAwesomeToggleOff">&#xf204;</system:String>
 </ResourceDictionary>
