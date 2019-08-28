@@ -31,13 +31,8 @@
                     Style="{StaticResource WaitingButton}"
                     Command="{Binding BusyCommand}"
                     local:IsBusyProperty.Value="{Binding ButtonIsBusy}"/>
-            <CheckBox Content="是否在相比线"
-                      VerticalAlignment="Center"
-                      FontSize="14"
-                      Width="60"
-                      Style="{StaticResource CheckBoxStyle2}"
-                      />
-           
+
+
         </WrapPanel>
     </Grid>
 </Window>
