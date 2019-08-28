@@ -8,8 +8,9 @@
         WindowStartupLocation="CenterScreen"
         Icon="/Images/icons/icon.ico"
         Style="{StaticResource MetroWindowStyle}"
-        Title="WindowTemplate" Height="350" Width="525">
- 
+        Title="WindowTemplate" Height="150" Width="80">
+   
+
     <WindowChrome.WindowChrome>
         <WindowChrome
             ResizeBorderThickness="3"
@@ -18,8 +19,20 @@
             CornerRadius="0"
             />
     </WindowChrome.WindowChrome>
-    <Grid Background="White">
-        <TextBlock Text="This is Content" VerticalAlignment="Center" HorizontalAlignment="Center"
-                   FontSize="30"/>
+    <Grid Background="#abcdef">
+        <WrapPanel  Margin="10">
+            <Button Content="矩形按钮" 
+                    Style="{StaticResource TextRectButton}"/>
+            <Button Content="Button" 
+                    Style="{StaticResource ImageButton}"/>
+            <Button Content="文字Button" 
+                    Style="{StaticResource TextButton}"/>
+            <Button Content="测试BusyProperty"
+                    Style="{StaticResource WaitingButton}"
+                    Command="{Binding BusyCommand}"
+                    local:IsBusyProperty.Value="{Binding ButtonIsBusy}"/>
+
+
+        </WrapPanel>
     </Grid>
 </Window>

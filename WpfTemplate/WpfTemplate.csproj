@@ -95,7 +95,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="AttachedProperties\BaseAttachedProperty.cs" />
+    <Compile Include="AttachedProperties\ButtonAttachedProperty.cs" />
     <Compile Include="AttachedProperties\使用示例BaseAttachedProperty.cs" />
+    <Compile Include="Converters\BaseValueConverter.cs" />
+    <Compile Include="Converters\BooleanToVisiblityConverter.cs" />
     <Compile Include="Expressions\ExpressionHelpers.cs" />
     <Compile Include="Log\Log.cs" />
     <Compile Include="Security\SecureStringHelpers.cs" />
@@ -124,6 +127,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Styles\Texts.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Styles\Windows.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -148,10 +155,12 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <Resource Include="Images\icons\icon.ico" />
+    <Resource Include="Images\head.jpg" />
     <Content Include="NLog.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Resource Include="Fonts\WEBDINGS.TTF" />
+    <Resource Include="Fonts\fontawesome-webfont.ttf" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>

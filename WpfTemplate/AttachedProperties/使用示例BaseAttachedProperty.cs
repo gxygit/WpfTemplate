@@ -77,11 +77,5 @@ namespace WpfTemplate
     }
 
 
-    /// <summary>
-    /// the isbusy attached property for a anything 
-    /// </summary>
-    public class IsBusyProperty : BaseAttachedProperty<IsBusyProperty, bool>
-    {
-
-    }
+   
 }

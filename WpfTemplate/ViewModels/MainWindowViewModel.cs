@@ -11,9 +11,13 @@ namespace WpfTemplate
     {
         private Window mWindow;//window 对象
 
+        public bool ButtonIsBusy { get; set; }
         public ICommand MinimizeCommand { get; set; }
         public ICommand MaximizeCommand { get; set; }
         public ICommand CloseCommand { get; set; }
+        public ICommand BusyCommand { get; set; }
+
+
 
         #region constructor
         public MainWindowViewModel(Window window)
@@ -22,6 +26,7 @@ namespace WpfTemplate
             MinimizeCommand = new RelayCommand(() => mWindow.WindowState = WindowState.Minimized);
             MaximizeCommand = new RelayCommand(() => mWindow.WindowState ^= WindowState.Maximized);
             CloseCommand = new RelayCommand(() => mWindow.Close());
+            BusyCommand = new RelayCommand(() => ButtonIsBusy = !ButtonIsBusy);
         }
         #endregion
     }
