@@ -31,13 +31,15 @@
                     Style="{StaticResource WaitingButton}"
                     Command="{Binding BusyCommand}"
                     local:IsBusyProperty.Value="{Binding ButtonIsBusy}"/>
-            <CheckBox Content="是否在相比线"
-                      VerticalAlignment="Center"
-                      FontSize="14"
-                      Width="60"
-                      Style="{StaticResource CheckBoxStyle2}"
-                      />
-           
+            <Button Style="{StaticResource IconGrowButton}" 
+                            Height="50"
+                            Command="{Binding BusyCommand}"
+                    Content="Busy?"/>
+            <Button Style="{StaticResource IconGrowImageButton}" 
+                            Height="50"
+                            Command="{Binding BusyCommand}">
+                <Image Source="/Images/head.jpg"/>
+            </Button>
         </WrapPanel>
     </Grid>
 </Window>

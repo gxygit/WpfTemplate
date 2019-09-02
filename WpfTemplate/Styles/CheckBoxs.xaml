@@ -87,7 +87,7 @@
                                             />-->
                                     <TextBlock x:Name="text" Text="OFF" VerticalAlignment="Center" 
                                                Foreground="White"
-                                               Margin="20 0 0 0">
+                                               Margin="0 0 0 0">
                                         <TextBlock.RenderTransform>
                                             <TranslateTransform x:Name="transText" X="0"></TranslateTransform>
                                         </TextBlock.RenderTransform>
@@ -104,17 +104,17 @@
                         </Grid>
                     </Grid>
                     <ControlTemplate.Triggers>
-                        <EventTrigger RoutedEvent="Checked" >
+                        <EventTrigger RoutedEvent="Unchecked" >
                             <BeginStoryboard>
-                                <Storyboard Storyboard.TargetName="text" Storyboard.TargetProperty="Margin">
-                               
+                                <Storyboard Storyboard.TargetName="transText" Storyboard.TargetProperty="X">
+                                    <DoubleAnimation To="20" Duration="0:0:0.2"/>
                                 </Storyboard>
                             </BeginStoryboard>
                         </EventTrigger>
                         <EventTrigger RoutedEvent="Checked" >
                             <BeginStoryboard>
-                                <Storyboard Storyboard.TargetName="text" Storyboard.TargetProperty="Margin">
-                                 
+                                <Storyboard Storyboard.TargetName="transText" Storyboard.TargetProperty="X">
+                                    <DoubleAnimation To="0" Duration="0:0:0.2"/>
                                 </Storyboard>
                             </BeginStoryboard>
                         </EventTrigger>
