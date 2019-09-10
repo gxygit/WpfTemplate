@@ -5,7 +5,7 @@ using System.Security;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Fasetto.Word.Core
+namespace WpfTemplate
 {
     /// <summary>
     /// an interface for a class that can provide a secure

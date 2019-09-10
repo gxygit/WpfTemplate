@@ -19,9 +19,9 @@
             CornerRadius="0"
             />
     </WindowChrome.WindowChrome>
-    <Grid Background="#abcdef">
+    <Grid Background="#1E1E1E">
         <WrapPanel  Margin="10">
-            <Button Content="矩形按钮" 
+            <!--<Button Content="矩形按钮" 
                     Style="{StaticResource TextRectButton}"/>
             <Button Content="Button" 
                     Style="{StaticResource ImageButton}"/>
@@ -39,7 +39,13 @@
                             Height="50"
                             Command="{Binding BusyCommand}">
                 <Image Source="/Images/head.jpg"/>
-            </Button>
+            </Button>-->
+            <TextBox Style="{StaticResource SearchTextBox}"/>
+            <TextBox Width="200" Style="{StaticResource LineTextBox}"
+                     Tag="请输入字符"/>
+
+
+            <!--<PasswordBox Width="150" Style="{StaticResource password}"/>-->
         </WrapPanel>
     </Grid>
 </Window>

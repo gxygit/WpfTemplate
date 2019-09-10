@@ -16,4 +16,5 @@
     <system:String x:Key="FontAwesomeChecked">&#xf00c;</system:String>
     <system:String x:Key="FontAwesomeToggleOn">&#xf205;</system:String>
     <system:String x:Key="FontAwesomeToggleOff">&#xf204;</system:String>
+    <system:String x:Key="FontAwesomeSearch">&#xf002;</system:String>
 </ResourceDictionary>

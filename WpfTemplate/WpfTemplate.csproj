@@ -96,6 +96,7 @@
     </ApplicationDefinition>
     <Compile Include="AttachedProperties\BaseAttachedProperty.cs" />
     <Compile Include="AttachedProperties\ButtonAttachedProperty.cs" />
+    <Compile Include="AttachedProperties\PasswordAttachedProperty.cs" />
     <Compile Include="AttachedProperties\使用示例BaseAttachedProperty.cs" />
     <Compile Include="Converters\BaseValueConverter.cs" />
     <Compile Include="Converters\BooleanToVisiblityConverter.cs" />
