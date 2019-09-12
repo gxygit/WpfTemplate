@@ -13,12 +13,15 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Management;
+using System.Security;
+using System.Runtime.InteropServices;
+
 namespace WpfTemplate
 {
     /// <summary>
     /// MainWindow.xaml 的交互逻辑
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : Window,IHavePassword
     {
         public MainWindow()
         {
@@ -26,9 +29,12 @@ namespace WpfTemplate
             DataContext = new MainWindowViewModel(this);
         }
 
+        public SecureString SecurePassword => PasswordText?.SecurePassword;
+
         private void CheckBox_Checked(object sender, RoutedEventArgs e)
         {
 
         }
+
     }
 }

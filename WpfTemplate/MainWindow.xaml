@@ -8,6 +8,7 @@
         WindowStartupLocation="CenterScreen"
         Icon="/Images/icons/icon.ico"
         Style="{StaticResource MetroWindowStyle}"
+        Name="window"
         Title="WindowTemplate" Height="150" Width="80">
    
 
@@ -39,13 +40,19 @@
                             Height="50"
                             Command="{Binding BusyCommand}">
                 <Image Source="/Images/head.jpg"/>
-            </Button>-->
+            </Button>
             <TextBox Style="{StaticResource SearchTextBox}"/>
             <TextBox Width="200" Style="{StaticResource LineTextBox}"
-                     Tag="请输入字符"/>
-
-
-            <!--<PasswordBox Width="150" Style="{StaticResource password}"/>-->
+                     Tag="请输入字符"/>-->
+            
+            <PasswordBox Width="150"
+                         Tag="请输入密码"
+                         x:Name="PasswordText"
+                         Style="{StaticResource password}"/>
+            <Button Content="查看密码" Style="{StaticResource TextRectButton}" 
+                    Foreground="White"
+                    BorderBrush="White"
+                    Command="{Binding GetPasswordCommand}"/>
         </WrapPanel>
     </Grid>
 </Window>

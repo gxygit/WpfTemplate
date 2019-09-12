@@ -180,7 +180,7 @@
                                    Visibility="{TemplateBinding local:HasTextProperty.Value, Converter={local:BooleanToVisiblityConverter}}"
                                    VerticalAlignment="Center"
                                    HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
-                                   Foreground="White"
+                                   Foreground="Gray"
                                    >
                         </TextBlock>
                     </Grid>

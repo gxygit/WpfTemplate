@@ -1,4 +1,5 @@
 ﻿
+using System.Security;
 using System.Windows;
 using System.Windows.Input;
 
@@ -18,6 +19,9 @@ namespace WpfTemplate
         public ICommand BusyCommand { get; set; }
 
 
+        public ICommand GetPasswordCommand { get; set; }
+
+
 
         #region constructor
         public MainWindowViewModel(Window window)
@@ -27,6 +31,7 @@ namespace WpfTemplate
             MaximizeCommand = new RelayCommand(() => mWindow.WindowState ^= WindowState.Maximized);
             CloseCommand = new RelayCommand(() => mWindow.Close());
             BusyCommand = new RelayCommand(() => ButtonIsBusy = !ButtonIsBusy);
+            GetPasswordCommand = new RelayCommand(() => MessageBox.Show("输入的密码是 "+(mWindow as IHavePassword).SecurePassword.Unsecure()));
         }
         #endregion
     }

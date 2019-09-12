@@ -99,6 +99,7 @@
     <Compile Include="AttachedProperties\PasswordAttachedProperty.cs" />
     <Compile Include="AttachedProperties\使用示例BaseAttachedProperty.cs" />
     <Compile Include="Converters\BaseValueConverter.cs" />
+    <Compile Include="Converters\SecureStringToStringConverter.cs" />
     <Compile Include="Converters\BooleanToVisiblityConverter.cs" />
     <Compile Include="Expressions\ExpressionHelpers.cs" />
     <Compile Include="Log\Log.cs" />

@@ -59,6 +59,7 @@
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="Padding" Value="10 2"/>
         <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="BorderBrush" Value="Black"/>
         <Setter Property="Margin" Value="10"/>
         <Setter Property="FontSize" Value="{StaticResource FontSizeRegular}"/>
         <Setter Property="Template" >
@@ -67,7 +68,7 @@
                     <Border Width="{TemplateBinding Width}" 
                             Height="{TemplateBinding Height}" 
                             Background="{TemplateBinding Background}"
-                            BorderBrush="Black"
+                            BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="0.8"
                             CornerRadius="3"
                             Padding="{TemplateBinding Padding}"
@@ -86,7 +87,7 @@
                             <BeginStoryboard>
                                 <Storyboard >
                                     <ColorAnimation To="#57A64A" Duration="0:0:0.3" Storyboard.TargetName="border" Storyboard.TargetProperty="Background.Color"/>
-                                    <ColorAnimation To="#FFFFFF" Duration="0:0:0.3" Storyboard.TargetName="text" Storyboard.TargetProperty="Foreground.Color"/>
+                                    <!--<ColorAnimation To="#FFFFFF" Duration="0:0:0.3" Storyboard.TargetName="text" Storyboard.TargetProperty="Foreground.Color"/>-->
                                 </Storyboard>
                             </BeginStoryboard>
                         </EventTrigger>
@@ -94,7 +95,7 @@
                             <BeginStoryboard>
                                 <Storyboard >
                                     <ColorAnimation To="#0057A64A" Duration="0:0:0.3" Storyboard.TargetName="border" Storyboard.TargetProperty="Background.Color"/>
-                                    <ColorAnimation To="#000000" Duration="0:0:0.3" Storyboard.TargetName="text" Storyboard.TargetProperty="Foreground.Color"/>
+                                    <!--<ColorAnimation To="#ffffff" Duration="0:0:0.3" Storyboard.TargetName="text" Storyboard.TargetProperty="Foreground.Color"/>-->
                                 </Storyboard>
                             </BeginStoryboard>
                         </EventTrigger>
