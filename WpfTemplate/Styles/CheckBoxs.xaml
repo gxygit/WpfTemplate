@@ -4,6 +4,54 @@
     <Style x:Key="CheckBoxBase" TargetType="{x:Type CheckBox}">
         <Setter Property="FontFamily" Value="{StaticResource FontAwesome}"/>
     </Style>
+
+    <Style TargetType="CheckBox" x:Key="CircleCheckbox">
+        <Setter Property="Cursor" Value="Hand"></Setter>
+        <Setter Property="Content" Value=""></Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type CheckBox}">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Border Background="Transparent"
+                                BorderBrush="White"
+                                BorderThickness="1" 
+                                CornerRadius="0" 
+                                VerticalAlignment="Center"  >
+                            <Grid Height="{TemplateBinding Height}"
+                                  Width="{Binding ActualHeight,RelativeSource={RelativeSource Self}}">
+                                <Ellipse x:Name="ellipse" Grid.Column="0" 
+                                         Fill="Blue" Margin="2" />
+                            </Grid>
+                        </Border>
+                        <ContentPresenter Grid.Column="1" 
+                                          x:Name="content"
+                                          Margin="5,0,0,0"
+                                          HorizontalAlignment="Left" 
+                                          VerticalAlignment="Center"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter TargetName="ellipse" Property="Fill" Value="Red">
+                            </Setter>
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="False">
+                            <Setter TargetName="ellipse" Property="Fill" Value="Blue">
+                            </Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
     <Style x:Key="CheckBoxStyle1" TargetType="{x:Type CheckBox}" BasedOn="{StaticResource CheckBoxBase}">
         <Setter Property="FontSize" Value="{StaticResource FontSizeRegular}"/>
         <Setter Property="Template">
@@ -55,41 +103,29 @@
 
     <Style x:Key="CheckBoxStyle2" TargetType="{x:Type CheckBox}" BasedOn="{StaticResource CheckBoxBase}">
         <Setter Property="FontSize" Value="{StaticResource FontSizeRegular}"/>
+        <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type CheckBox}">
                     <Grid x:Name="templateRoot">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="auto"/>
-                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="auto"/>
                         </Grid.ColumnDefinitions>
-
-
-
-                        <Grid x:Name="border" Width="{TemplateBinding Width}"
+                        <Grid x:Name="border" Width="50"
                                  Height="{TemplateBinding Height}">
                             <Viewbox >
                                 <Grid>
-
-                                    <Path Data="M 10,0 l 30,0 A 10,10 0 1 1 40,20 l-30,0 A 10,10 0 1 1 10,0 Z"
-                                          Stroke="Black"
-                                          StrokeThickness="0"
-                                          Fill="#00c000"/>
-                                    <!--<TextBlock x:Name="text" Text="ON" VerticalAlignment="Center" 
-                                               Foreground="White"
-                                               Margin="5 0 0 0"/>
-                                    <Border x:Name="ToggleButton"
-                                            Height="18" Width="18"
-                                            CornerRadius="18"
-                                            Background="White"
-                                            HorizontalAlignment="Left"
-                                            Margin="30 0 0 0"
-                                            />-->
-                                    <TextBlock x:Name="text" Text="OFF" VerticalAlignment="Center" 
+                                    <Border Background="Gray" 
+                                            Width="50" 
+                                            x:Name="back"
+                                            CornerRadius="9"/>
+                                    <TextBlock x:Name="text" Text="OFF" 
+                                               VerticalAlignment="Center" 
                                                Foreground="White"
                                                Margin="0 0 0 0">
                                         <TextBlock.RenderTransform>
-                                            <TranslateTransform x:Name="transText" X="0"></TranslateTransform>
+                                            <TranslateTransform x:Name="transText" X="20"></TranslateTransform>
                                         </TextBlock.RenderTransform>
                                     </TextBlock>
                                     <Border x:Name="ToggleButton"
@@ -98,23 +134,59 @@
                                             Background="White"
                                             HorizontalAlignment="Left"
                                             Margin="1 0 0 0"
-                                            />
+                                            >
+                                        <Border.RenderTransform>
+                                            <TranslateTransform x:Name="transBorder" X="0"></TranslateTransform>
+                                        </Border.RenderTransform>
+                                    </Border>
                                 </Grid>
                             </Viewbox>
                         </Grid>
+                        <ContentPresenter Grid.Column="1"
+                                          Panel.ZIndex="100"
+                                          HorizontalAlignment="Left"
+                                          VerticalAlignment="Center"
+                                          Margin="3 0 0 0"/>
                     </Grid>
                     <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter Property="Text" Value="ON" TargetName="text"/>
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="False">
+                            <Setter Property="Text" Value="OFF" TargetName="text"/>
+                        </Trigger>
+                        
                         <EventTrigger RoutedEvent="Unchecked" >
                             <BeginStoryboard>
                                 <Storyboard Storyboard.TargetName="transText" Storyboard.TargetProperty="X">
                                     <DoubleAnimation To="20" Duration="0:0:0.2"/>
                                 </Storyboard>
                             </BeginStoryboard>
+                            <BeginStoryboard>
+                                <Storyboard Storyboard.TargetName="transBorder" Storyboard.TargetProperty="X">
+                                    <DoubleAnimation To="0" Duration="0:0:0.2"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                            <BeginStoryboard>
+                                <Storyboard Storyboard.TargetName="back" Storyboard.TargetProperty="Background.Color">
+                                    <ColorAnimation To="Gray" Duration="0:0:0.2"/>
+                                </Storyboard>
+                            </BeginStoryboard>
                         </EventTrigger>
                         <EventTrigger RoutedEvent="Checked" >
                             <BeginStoryboard>
                                 <Storyboard Storyboard.TargetName="transText" Storyboard.TargetProperty="X">
-                                    <DoubleAnimation To="0" Duration="0:0:0.2"/>
+                                    <DoubleAnimation To="5" Duration="0:0:0.2"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                            <BeginStoryboard>
+                                <Storyboard Storyboard.TargetName="transBorder" Storyboard.TargetProperty="X">
+                                    <DoubleAnimation To="30" Duration="0:0:0.2"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                            <BeginStoryboard>
+                                <Storyboard Storyboard.TargetName="back" Storyboard.TargetProperty="Background.Color">
+                                    <ColorAnimation To="#00c000" Duration="0:0:0.2"/>
                                 </Storyboard>
                             </BeginStoryboard>
                         </EventTrigger>

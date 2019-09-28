@@ -86,3 +86,5 @@ C:\Users\Administrator\Desktop\Gits\WpfTemplate\obj\Debug\WpfTemplate.exe
 C:\Users\Administrator\Desktop\Gits\WpfTemplate\obj\Debug\WpfTemplate.pdb
 C:\Users\Administrator\Desktop\Gits\WpfTemplate\obj\Debug\Styles\CheckBoxs.baml
 C:\Users\Administrator\Desktop\Gits\WpfTemplate\obj\Debug\WpfTemplate.csprojAssemblyReference.cache
+C:\Users\Administrator\Desktop\Gits\WpfTemplate\obj\Debug\Styles\Scrolls.baml
+C:\Users\Administrator\Desktop\Gits\WpfTemplate\obj\Debug\Styles\TabControls.baml

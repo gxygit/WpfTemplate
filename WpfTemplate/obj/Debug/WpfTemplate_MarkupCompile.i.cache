@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Administrator\Desktop\Gits\WpfTemplate\App.xaml
-61561076681
+8877041636
 1-2138471434
 21605813819
 231921817496
-MainWindow.xaml;Styles\Buttons.xaml;Styles\CheckBoxs.xaml;Styles\Fonts.xaml;Styles\Texts.xaml;Styles\Windows.xaml;
+MainWindow.xaml;Styles\Buttons.xaml;Styles\CheckBoxs.xaml;Styles\Fonts.xaml;Styles\Scrolls.xaml;Styles\TabControls.xaml;Styles\Texts.xaml;Styles\Windows.xaml;
 
-False
+True
 
