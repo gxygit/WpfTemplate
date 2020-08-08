@@ -1,0 +1,20 @@
+﻿<UserControl x:Class="ScreenCapture.TextBlockBox"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ScreenCapture"
+             mc:Ignorable="d" 
+             MinWidth="30">
+    <StackPanel >
+        <TextBox x:Name="txtBox" TextAlignment="Left" TextWrapping="Wrap" 
+                 FontSize="24"
+                 MinWidth="100" MinHeight="100"
+                 BorderBrush="White" 
+                 BorderThickness="0.5"
+                 Background="Transparent" 
+                 Foreground="Red"
+                 AcceptsReturn="True"
+                 VerticalContentAlignment="Top"/>
+    </StackPanel>
+</UserControl>

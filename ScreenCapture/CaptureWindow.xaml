@@ -1,0 +1,154 @@
+﻿<Window x:Class="ScreenCapture.CaptureWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ScreenCapture"
+        xmlns:base="clr-namespace:ViewModel.Base;assembly=ViewModel.Base"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent"
+        ShowInTaskbar="False"
+        mc:Ignorable="d"
+        Topmost="True"
+        Title="截屏窗口">
+    <Window.Resources>
+        <SolidColorBrush x:Key="MainColor" Color="Red"/>
+        <Style x:Key="dragThumb" TargetType="Border">
+            <Setter Property="Width" Value="7"/>
+            <Setter Property="Height" Value="7"/>
+            <Setter Property="Background" Value="{StaticResource MainColor}"/>
+        </Style>
+        <BitmapImage x:Key="rect" UriSource="./icons/rect.png"></BitmapImage>
+        <BitmapImage x:Key="circle" UriSource="./icons/circle.png"></BitmapImage>
+        <BitmapImage x:Key="arrow" UriSource="./icons/arrow.png"></BitmapImage>
+        <BitmapImage x:Key="pen" UriSource="./icons/pen.png"></BitmapImage>
+        <BitmapImage x:Key="download" UriSource="./icons/download.png"></BitmapImage>
+        <BitmapImage x:Key="mosaic" UriSource="./icons/mosaic.png"></BitmapImage>
+        <BitmapImage x:Key="text" UriSource="./icons/text.png"></BitmapImage>
+        <BitmapImage x:Key="rotate" UriSource="./icons/rotate.png"></BitmapImage>
+        <BitmapImage x:Key="ding" UriSource="./icons/ding.png"></BitmapImage>
+        <BitmapImage x:Key="close" UriSource="./icons/close.png"></BitmapImage>
+        <BitmapImage x:Key="ok" UriSource="./icons/ok.png"></BitmapImage>
+        <Style x:Key="ImageButton" TargetType="Button">
+            <Setter Property="Margin" Value="3"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Border ToolTip="{TemplateBinding Property=ToolTip}" x:Name="border" CornerRadius="2" BorderThickness="1" BorderBrush="Transparent" Width="21" Height="21">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Width="20" Height="20" RenderOptions.BitmapScalingMode="Linear" 
+                                       Source="{TemplateBinding Property=local:ButtonImageProperty.Value}"/>
+                            </StackPanel>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <DataTrigger Binding="{Binding Path=IsMouseOver,ElementName=border}" Value="True">
+                                <Setter Property="BorderBrush" Value="Gray" TargetName="border"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding Path=IsMouseOver,ElementName=border}" Value="False">
+                                <Setter Property="BorderBrush" Value="Transparent" TargetName="border"/>
+                            </DataTrigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Grid x:Name="Back">
+        <Image IsHitTestVisible="False" Source="{Binding FullScreenSource}" Stretch="None"/>
+        <Grid MouseDown="OnMouseDown" MouseUp="OnMouseUp" MouseMove="OnMouseMove" Background="#99000000"/>
+        <Image Source="{Binding FullScreenSource}" Stretch="None" IsHitTestVisible="False" RenderOptions.BitmapScalingMode="NearestNeighbor" >
+            <Image.Clip>
+                <RectangleGeometry Rect="{Binding CaptureRect}"></RectangleGeometry>
+            </Image.Clip>
+        </Image>
+        <Grid x:Name="imageSourceGrid" IsHitTestVisible="False">
+            <Image x:Name="imageSourceBack" RenderOptions.BitmapScalingMode="NearestNeighbor"  Visibility="Hidden" IsHitTestVisible="False" Source="{Binding FullScreenSource}" Stretch="None"/>
+            <InkCanvas Name="inkCanvasMeasure"  Background="Transparent" Strokes="{Binding InkStrokes}">
+            </InkCanvas>
+        </Grid>
+        <Canvas>
+            <!--工具条-->
+            <StackPanel Canvas.Left="{Binding ToolLeft}"
+                        Canvas.Top="{Binding ToolTop}"
+                        Visibility="{Binding ToolVisible,Converter={base:BooleanToVisiblityConverter}}"
+                        x:Name="ButtonsPanel" 
+                        Orientation="Horizontal"
+                        Background="White">
+                <Button  Style="{StaticResource ImageButton}" Click="OnRectClick" ToolTip="矩形工具"
+                        local:ButtonImageProperty.Value="{StaticResource rect}"/>
+                <Button  Style="{StaticResource ImageButton}" Click="OnCircleClick" ToolTip="圆形工具"
+                        local:ButtonImageProperty.Value="{StaticResource circle}"/>
+                <Button  Style="{StaticResource ImageButton}" Click="OnArrowClick" ToolTip="箭头工具"
+                        local:ButtonImageProperty.Value="{StaticResource arrow}"/>
+                <Button  Style="{StaticResource ImageButton}" Click="OnPenClick" ToolTip="画笔工具"
+                        local:ButtonImageProperty.Value="{StaticResource pen}"/>
+                <Button  Style="{StaticResource ImageButton}" Click="OnTextClick" ToolTip="文字工具"
+                        local:ButtonImageProperty.Value="{StaticResource text}"/>
+                <Button  Style="{StaticResource ImageButton}" Click="OnMosaicClick" ToolTip="马赛克工具"
+                        local:ButtonImageProperty.Value="{StaticResource mosaic}"/>
+                <Button  Style="{StaticResource ImageButton}" Click="OnDownLoadClick" ToolTip="保存到本地"
+                        local:ButtonImageProperty.Value="{StaticResource download}"/>
+                <Button  Style="{StaticResource ImageButton}" Click="OnDingClick" ToolTip="钉在桌面上"
+                        local:ButtonImageProperty.Value="{StaticResource ding}"/>
+                <Button  Style="{StaticResource ImageButton}" Click="OnCloseClick" ToolTip="取消"
+                        local:ButtonImageProperty.Value="{StaticResource close}"/>
+                <Button  Style="{StaticResource ImageButton}" Click="OnCopyClick" ToolTip="复制到剪贴板"
+                        local:ButtonImageProperty.Value="{StaticResource ok}"/>
+            </StackPanel>
+        </Canvas>
+        <Canvas x:Name="ClipBorderCanvas" IsHitTestVisible="False">
+            <!--边框-->
+            <Border Style="{x:Null}" Cursor="SizeAll" Canvas.ZIndex="99"
+                           Width="{Binding CaptureRect.Width}"
+                           Height="{Binding CaptureRect.Height}" 
+                           Canvas.Left="{Binding CaptureRect.X}"
+                           Canvas.Top="{Binding CaptureRect.Y}"
+                           BorderBrush="{StaticResource MainColor}" BorderThickness="1"
+                           Background="Transparent"
+                           MouseDown="OnBorderMouseDown"
+                           local:DragMoveActionProperty.Value="OnDragMove">
+            </Border>
+            <!--拖动点-->
+            <Grid  Canvas.ZIndex="100"
+                        Background="{x:Null}"
+                          Width="{Binding CaptureRect.Width}"
+                           Height="{Binding CaptureRect.Height}" 
+                           Canvas.Left="{Binding CaptureRect.X}"
+                           Canvas.Top="{Binding CaptureRect.Y}"
+            >
+                <Border  Cursor="SizeNWSE" Style="{StaticResource dragThumb}"
+                       local:DragResizeAction1Property.Value="OnDragResize"
+                       VerticalAlignment="Top" HorizontalAlignment="Left" Margin="-3 -3 0 0"/>
+                <Border  Cursor="SizeNS" Style="{StaticResource dragThumb}"
+                          local:DragResizeAction2Property.Value="OnDragResize"
+                       VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0 -3 0 0"/>
+                <Border  Cursor="SizeNESW" Style="{StaticResource dragThumb}"
+                            local:DragResizeAction3Property.Value="OnDragResize"
+                       VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0 -3 -3 0"/>
+                <Border Cursor="SizeWE" Style="{StaticResource dragThumb}"
+                       local:DragResizeAction4Property.Value="OnDragResize"
+                       VerticalAlignment="Center" HorizontalAlignment="Left" Margin="-3 0 0 0"/>
+                <Border Cursor="SizeWE" Style="{StaticResource dragThumb}"
+                      local:DragResizeAction5Property.Value="OnDragResize"
+                       VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 0 -3 0"/>
+                <Border Cursor="SizeNESW" Style="{StaticResource dragThumb}"
+                       local:DragResizeAction6Property.Value="OnDragResize"
+                       VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="-3 0 0 -3"/>
+                <Border Cursor="SizeNS" Style="{StaticResource dragThumb}"
+                       local:DragResizeAction7Property.Value="OnDragResize"
+                       VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0 0 0 -3"/>
+                <Border  Cursor="SizeNWSE" Style="{StaticResource dragThumb}"
+                    local:DragResizeAction8Property.Value="OnDragResize"
+                       VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0 0 -3 -3"/>
+            </Grid>
+        </Canvas>
+        <Canvas >
+            <local:TextBlockBox x:Name="input" 
+                                Visibility="Hidden" 
+                                />
+        </Canvas>
+
+       
+    </Grid>
+</Window>

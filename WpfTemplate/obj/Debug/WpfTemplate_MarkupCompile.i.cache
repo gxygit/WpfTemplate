@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\Administrator\Desktop\Gits\WpfTemplate\obj\Debug\
+D:\vsworkspace\wpfTemplate\WpfTemplate\obj\Debug\
 WpfTemplate
 none
 false
 DEBUG;TRACE
-C:\Users\Administrator\Desktop\Gits\WpfTemplate\App.xaml
-8877041636
+D:\vsworkspace\wpfTemplate\WpfTemplate\App.xaml
+9-714904563
 1-2138471434
-21605813819
-231921817496
-MainWindow.xaml;Styles\Buttons.xaml;Styles\CheckBoxs.xaml;Styles\Fonts.xaml;Styles\Scrolls.xaml;Styles\TabControls.xaml;Styles\Texts.xaml;Styles\Windows.xaml;
+22-791919316
+24-1588914562
+MainWindow.xaml;StartCapture.xaml;Styles\Buttons.xaml;Styles\CheckBoxs.xaml;Styles\Fonts.xaml;Styles\Scrolls.xaml;Styles\TabControls.xaml;Styles\Texts.xaml;Styles\Windows.xaml;
 
 True
 

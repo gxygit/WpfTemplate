@@ -16,8 +16,7 @@ namespace WpfTemplate
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
-            MainWindow m = new WpfTemplate.MainWindow();
-            m.Show();
+            new StartCapture().Show();
         }
     }
 }
